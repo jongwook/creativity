@@ -3,16 +3,35 @@
   <meta name="viewport" content="initial-scale=1.0">
 </head>
 <body>
-  <nav class="top-bar" data-topbar>
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="#">Creativity</a></h1>
-      </li>
-    </ul>
-  </nav>
+  {{> top}}
   <div class="row">
-    <div class="12 columns">
+    <div class="large-12 columns" style="min-height: 450px;">
       {{> renderPage}}
     </div>
   </div>
+  {{> bottom}}
 </body>
+
+<template name="top">
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#">{{title}}</a></h1>
+      </li>
+    </ul>
+  </nav>
+</template>
+
+<template name="bottom">
+  <div class="row" id="bottom-bar">
+    <div class="large-2 columns text-left">
+    </div>
+    <div class="large-8 columns text-center">
+    </div>
+    <div class="large-2 columns text-right">
+      <a href="{{nextPage}}">
+        <img src="/images/next.jpeg" alt="next" width="80px">
+      </a>
+    </div>
+  </div>
+</template>
