@@ -3,7 +3,9 @@
   <meta name="viewport" content="initial-scale=1.0">
 </head>
 <body>
-  {{> top}}
+  <section class="top-bar-section">
+    {{> top}}
+  </section>
   <div class="row">
     <div class="large-12 columns" style="min-height: 450px;">
       {{> renderPage}}
@@ -13,7 +15,7 @@
 </body>
 
 <template name="top">
-  <nav class="top-bar" data-topbar>
+  <nav class="top-bar row" data-topbar>
     <ul class="title-area">
       <li class="name">
         <h1><a href="#">{{title}}</a></h1>
@@ -29,9 +31,11 @@
     <div class="large-8 columns text-center">
     </div>
     <div class="large-2 columns text-right">
-      <a href="{{nextPage}}">
-        <img src="/images/next.jpeg" alt="next" width="80px">
-      </a>
+      {{#if nextPage}}
+        <a href="{{nextPage}}">
+          <img src="/images/next.jpeg" alt="next" width="80px">
+        </a>
+      {{/if}}
     </div>
   </div>
 </template>
