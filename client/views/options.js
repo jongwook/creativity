@@ -37,10 +37,17 @@ Template.options.questions = getQuestion;
 
 Template.options.events({
   'click input[type="radio"]': function(event) {
-    var page = Session.get("currentPage");
-    var input = event.target;
-    var name = input.name;
-    var value = input.value;
-    console.log(page, name, value);
+    var survey = {
+      id: Session.get("id"),
+      page: Session.get("currentPage"),
+      name: event.target.name,
+      value: event.target.value
+    };
+    Meteor.call('survey', survey, function(error, result) {
+      if (error) {
+        throw error;
+      }
+      console.log('submitted survey data : ' + result);
+    });
   }
 });
