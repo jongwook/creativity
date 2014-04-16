@@ -7,3 +7,16 @@ Meteor.startup(function() {
   Session.set("id", id);
   console.log("Session ID : " + id);
 });
+
+Template.bottom.events({
+  'click a.nextPage': function() {
+    if (Template.bottom.verify instanceof Function) {
+      var result = Template.bottom.verify();
+      if (result) {
+        Template.bottom.verify = null;
+      }
+      return result;
+    }
+    return true;
+  }
+});

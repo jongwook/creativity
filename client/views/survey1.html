@@ -1,8 +1,57 @@
 <template name="survey1">
-  <div class="row survey1-page">
-    <div class="large-12 columns">
-      survey1
+  <div class="survey1-page">
+    <div class="row">
+      <div class="large-12 columns instruction">
+        검사를 실시하기에 앞서 다음과 같은 정보를 입력해주시기 바랍니다.
+      </div>
     </div>
+    <form class="survey-form">
+      <div class="row">
+        <div class="small-3 large-2 columns vcenter">
+          1. 이름
+        </div>
+        <div class="small-9 large-2 columns">
+          <input type="text" name="name" placeholder="이름" required>
+        </div>
+        <div class="large-8 columns"></div>
+      </div>
+      <div class="row">
+        <div class="small-3 large-2 columns vcenter">
+          2. 성별
+        </div>
+        <div class="small-9 large-10 columns vcenter">
+          <input type="radio" name="gender" value="male" id="gender-male" required><label for="gender-male">남</label>
+          <input type="radio" name="gender" value="female" id="gender-female" required><label for="gender-female">여</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-3 large-2 columns vcenter">
+          3. 출생년도
+        </div>
+        <div class="small-9 large-2 columns">
+          <input type="number" name="birthyear" placeholder="출생년도">
+        </div>
+        <div class="large-8 columns"></div>
+      </div>
+      <div class="row">
+        <div class="small-12 large-2 column vcenter">
+          4. 전공
+        </div>
+        <div class="small-8 large-2 column">
+          <input type="text" name="college" placeholder="대학">
+        </div>
+        <div class="small-4 large-2 columns vcenter">
+          대학교
+        </div>
+        <div class="small-8 large-2 columns">
+          <input type="text" name="major" placeholder="전공">
+        </div>
+        <div class="small-4 large-2 columns vcenter">
+          학과(전공)
+        </div>
+        <div class="large-2 columns"></div>
+      </div>
+    </form>
   </div>
 </template>
 
