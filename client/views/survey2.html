@@ -1,0 +1,36 @@
+<template name="survey2a">
+  <div class="row survey2a-page">
+    <div class="instruction">
+      <li>주어진 시간이 모두 끝났습니다.</li>
+      <li>다음은 검사가 진행되는 동안 여러분이 느낀 감정과 생각을 알아보기 위한 것이니,<br>&nbsp;&nbsp;&nbsp;자신이 <em>느낀 그대로</em> 솔직하게 응답해주시기 바랍니다.</li>
+    </div>
+    <div class="row question">
+      <div class="small-8 large-9 columns vcenter">
+        나는 이전에 비슷한 유형의 창의성 검사(TTCT 등)를 해본 적이 있다.
+      </div>
+      <div class="small-4 large-3 columns vcenter">
+        <input type="radio" name="survey2-0" value="yes" id="survey2-0-yes"><label for="survey2-0-yes">있다</label>
+        <input type="radio" name="survey2-0" value="no" id="survey2-0-no"><label for="survey2-0-no">없다</label>
+      </div>
+    </div>
+    {{> options}}
+  </div>
+</template>
+
+<template name="survey2b">
+  <div class="row survey2b-page">
+    {{> options}}
+  </div>
+</template>
+
+<template name="survey2c">
+  <div class="row survey2c-page">
+    {{> options}}
+  </div>
+</template>
+
+<template name="survey2d">
+  <div class="row survey2d-page">
+    {{> options}}
+  </div>
+</template>
