@@ -9,7 +9,9 @@ Template.survey1.rendered = function() {
       name: form.find('input[name="name"]').val(),
       gender: form.find('input[name="gender"]:checked').val(),
       college: form.find('input[name="college"]').val(),
-      major: form.find('input[name="major"]').val()
+      major: form.find('input[name="major"]').val(),
+      year: form.find('input[name="year"]:checked').val(),
+      yearCustom: form.find('input[name="yearCustom"]').val()
     };
     if (!values.name) {
       alert('이름을 입력해 주세요');
@@ -27,6 +29,16 @@ Template.survey1.rendered = function() {
       alert('전공을 입력해 주세요');
       return false;
     }
+    if (!values.year) {
+      alert('학년을 입력해 주세요');
+      return false;
+    }
+    if (values.year === "custom" && !values.yearCustom) {
+      alert('학년을 직접 입력해주세요');
+      return false;
+    }
+    var id = Session.get("id");
+    Answers.update({_id: id}, {_id: id, info: values}, {upsert: true});
     return true;
   }
 };

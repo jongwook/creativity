@@ -34,20 +34,25 @@ var getQuestion = function() {
 };
 
 Template.options.questions = getQuestion;
-
-Template.options.events({
-  'click input[type="radio"]': function(event) {
-    var survey = {
-      id: Session.get("id"),
-      page: Session.get("currentPage"),
-      name: event.target.name,
-      value: event.target.value
-    };
-    Meteor.call('survey', survey, function(error, result) {
-      if (error) {
-        throw error;
+Template.options.rendered = function() {
+  Template.bottom.verify = function() {
+    var buttons = $("#main-container").find('input[type="radio"]');
+    var checked = buttons.filter(':checked');
+    var answers = {};
+    for (var i = 0; i < buttons.length; i++) {
+      answers[$(buttons[i]).attr("name")] = null;
+    }
+    for (var j = 0; j < checked.length; j++) {
+      answers[$(checked[j]).attr("name")] = $(checked[j]).val();
+    }
+    for (var key in answers) {
+      if (answers.hasOwnProperty(key) && answers[key] === null) {
+        alert("응답하지 않은 문항이 있습니다");
+        return false;
       }
-      console.log('submitted survey data : ' + result);
-    });
+    }
+    var id = Session.get("id");
+    Answers.update({_id: id}, {$set: answers});
+    return true;
   }
-});
+};
