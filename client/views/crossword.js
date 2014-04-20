@@ -196,8 +196,8 @@ Template.crossword.puzzle = (function() {
 })();
 
 Template.crossword.rendered = function () {
-  Template.top.title('활동 B');
+  Template.top.title('활동B');
   Template.top.desc('가로세로 낱말퍼즐');
-  Session.set('nextPage', '/video'); // TODO: timer
+  Session.set('nextPage', null); // TODO: timer
 };
 
