@@ -14,7 +14,7 @@ Template.activity1a.rendered = function() {
 Template.activity1b.answers = function() {
   var id = Session.get("id");
   var record = Answers.findOne({_id: id});
-  return record ? record.answers : ["", "", "", ""];
+  return record && record.answers ? record.answers : ["", "", "", ""];
 };
 
 Template.activity1b.events({
