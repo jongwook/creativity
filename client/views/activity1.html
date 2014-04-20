@@ -1,39 +1,64 @@
 <template name="activity1">
-  <div class="row" id="activity1-page">
-    <div class="small-12 large-12 columns text-center">
-      <p>
-        아래 동영상에는 새롭고 독특한 사고의 발상을 통해<br>
-        다양한 분야에서 혁신을 이룬 사례들이 소개되어 있습니다.
-      </p>
-      <iframe width="480" height="320" src="//www.youtube.com/embed/_OBlgSz8sSM" frameborder="0" allowfullscreen></iframe>
-    </div>
+  <div class="row activity1-page text-center">
+    <p>본 검사는 <em>총 25분 정도</em>가 소요될 예정입니다.</p>
+    <p>자 이제부터 검사를 시작해볼까요?</p>
   </div>
 </template>
 
 <template name="activity1a">
-  <div class="row" id="activity1a-page">
-    <div class="small-12 large-12 columns">
-      <ul>
-        <li>여러분들도 동영상의 사례들처럼 획기적인 사고의 발상이 필요하다고 생각되는 <u>분야를 3개 선택하고</u>, 무엇을 어떻게 바꾸고 싶으며 어디에 활용할 수 있는지 등에 대해  가능한 한 <u>새롭고 독창적인 아이디어</u>를 많이 제시하십시오.</li>
-        <li>단 이때 <u>실천 가능한</u> 방법이어야 하며 그 외에도 <u>흥미, 가치, 공익성, 경제성(비용과 시간)</u> 등을 함께 고려해야 합니다.</li>
-        <li>본 검사는 제한 시간 내에 적어도 <em>10개 이상</em>의 아이디어를 제시해야 채점이 가능하며 시간 내 완성하지 못할 경우 채점이 불가능하여 최하점을 받게 됩니다. 제한 시간 내에 보다 다양하고 창의적인 아이디어를 떠올려주시기 바랍니다.</li>
-        <li><u>제한시간은 15분</u> 입니다.</li>
-        <li>그럼 이제 시작하겠습니다.</li>
-      </ul>
-    </div>
+  <div class="activity1a-page text-center">
+    <p>
+      <object width="480" height="302" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000">
+        <param name="flashvars" value="vid=33430333&amp;autoplay=true&amp;locale=ko_KR"/>
+        <param name="allowfullscreen" value="true"/>
+        <param name="allowscriptaccess" value="always"/>
+        <param name="src" value="http://www.ustream.tv/flash/viewer.swf"/>
+        <embed flashvars="vid=33430333&amp;autoplay=true&amp;locale=ko_KR" width="480" height="302" allowfullscreen="true" allowscriptaccess="always" src="http://www.ustream.tv/flash/viewer.swf" type="application/x-shockwave-flash" />
+      </object>
+    </p>
+    <p>
+      <span class="appear">변기라는 익숙한 사물을 전시회라는 낯선 공간에 놓음으로써</span><br>
+      <span class="appear">기존에 없던 새로움을 창조한 현대미술의 아버지 “<em>마르셀 뒤샹</em>”</span>
+    </p>
+    <p>
+      <span class="appear">일상의 친숙한 사물들을 원래 있던 환경에서 떼어내 엉뚱한 곳에 배치하고</span><br>
+      <span class="appear">전혀 다른 소재를 조합해 시각적인 충격을 극대화 한 벨기에의 초현실주의 화가 "<em>르네 마그네트</em>"</span>
+    </p>
+    <p>
+      <span class="appear">마우스 + GUI (그래픽 유저 인터페이스) = 맥킨토시</span><br>
+      <span class="appear">MP3 플레이어 + 아이튠즈 + 음악 컨텐츠 = 아이팟</span><br>
+      <span class="appear">기존의 기술을 남다른 방식으로 조합해 익숙하지만 낯선 새로움을 재창조한 혁신의 대명사 애플의 “<em>스티븐 잡스</em>”</span>
+    </p>
   </div>
 </template>
 
 <template name="activity1b">
-  <div class="row" id="activity1b-page">
-    <div class="small-12 large-12 columns">
-      TODO: forms
+  <div class="row activity1b-page">
+    <p style="font-size: 16pt;">
+      ■ <em>새롭고 혁신적인</em> 아이디어와 그 이유를 최대한 <em>많이</em> 제시하십시오.
+    </p>
+    <p style="color: #666;">
+      ※ 엔터(Enter) 버튼을 누르면 입력할 수 있는 칸이 자동 생성됩니다.
+    </p>
+    <div class="row">
+      <div class="small-1 large-1 columns text-right">
+        <ol>
+          {{#each answers}}
+            <li></li>
+          {{/each}}
+        </ol>
+      </div>
+      <div class="small-11 larget-11 columns">
+        {{#each answers}}
+          <input type="text" value="{{this}}">
+        {{/each}}
+      </div>
     </div>
   </div>
 </template>
 
 <template name="activity1c">
-  <div class="row" id="activity1c-page">
+  <div class="row activity1c-page">
     <div class="small-1 large-2 columns">&nbsp;</div>
     <div class="small-10 large-8 columns text-center box">
       시간이 다 되었습니다.<br><br>

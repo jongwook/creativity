@@ -3,6 +3,7 @@ Template.description.rendered = function() {
   Template.top.desc('');
   Session.set('nextPage', '/survey1');
   console.log('description page loaded');
+  appear();
 };
 
 

@@ -9,7 +9,7 @@ Meteor.startup(function() {
 });
 
 Template.bottom.events({
-  'click a.nextPage': function() {
+  'click a#next-button': function() {
     if (Template.bottom.verify instanceof Function) {
       var result = Template.bottom.verify();
       if (result) {
