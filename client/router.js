@@ -30,6 +30,7 @@ Template.bottom.nextPage = function () {
 Meteor.Router.add({
   '/': 'welcome',
   '/welcome': 'welcome',
+  '/intro': 'intro',
   '/description': 'description',
   '/survey1': 'survey1',
   '/survey1a': 'survey1a',
@@ -39,6 +40,9 @@ Meteor.Router.add({
   '/activity1a': 'activity1a',
   '/activity1b': 'activity1b',
   '/activity1c': 'activity1c',
+  '/crossword': 'crossword',
+  '/video': 'video',
+  '/meditation': 'meditation',
   '/survey2a': 'survey2a',
   '/survey2b': 'survey2b',
   '/survey2c': 'survey2c',

@@ -1,0 +1,61 @@
+<template name="crossword">
+  <div class="timer">
+
+  </div>
+  <div class="row crossword-page">
+    <div class="small-12 large-5 columns text-center">
+      <table id="crossword-table">
+        {{#each values puzzle}}
+          <tr>
+            {{#each values this}}
+              <td class="{{#unless letter}}blocked{{/unless}}">
+                {{#if label}}
+                  <div class="marker">{{label}}</div>
+                {{/if}}
+                {{#if letter}}
+                  <input type="text" maxlength="1">
+                {{/if}}
+              </td>
+            {{/each}}
+          </tr>
+        {{/each}}
+      </table>
+    </div>
+    <div class="small-12 large-7 columns">
+      <table class="row">
+        <thead>
+          <tr>
+            <th class="small-6 large-6 columns">
+              가로 열쇠
+            </th>
+            <th class="small-6 large-6 columns">
+              세로 열쇠
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="small-6 large-6 columns">
+              {{#each values puzzle}}
+              {{#each values this}}
+              {{#if horizontal}}
+              {{label}}. {{horizontal}}<br>
+              {{/if}}
+              {{/each}}
+              {{/each}}
+            </td>
+            <td class="small-6 large-6 columns">
+              {{#each values puzzle}}
+              {{#each values this}}
+              {{#if vertical}}
+              {{label}}. {{vertical}}<br>
+              {{/if}}
+              {{/each}}
+              {{/each}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</template>
