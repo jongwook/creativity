@@ -14,27 +14,27 @@ Template.survey1.rendered = function() {
       yearCustom: form.find('input[name="yearCustom"]').val()
     };
     if (!values.name) {
-      alert('이름을 입력해 주세요');
+      alert('이름을 입력해 주십시오');
       return false;
     }
     if (!values.gender) {
-      alert('성별을 입력해 주세요');
+      alert('성별을 입력해 주십시오');
       return false;
     }
     if (!values.college) {
-      alert('대학교를 입력해 주세요');
+      alert('대학교를 입력해 주십시오');
       return false;
     }
     if (!values.major) {
-      alert('전공을 입력해 주세요');
+      alert('전공을 입력해 주십시오');
       return false;
     }
     if (!values.year) {
-      alert('학년을 입력해 주세요');
+      alert('학년을 입력해 주십시오');
       return false;
     }
     if (values.year === "custom" && !values.yearCustom) {
-      alert('학년을 직접 입력해주세요');
+      alert('학년을 직접 입력해 주십시오');
       return false;
     }
     var id = Session.get("id");

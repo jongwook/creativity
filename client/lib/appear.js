@@ -1,6 +1,6 @@
 appear = function() {
   var items = $(".appear").hide().toArray();
-  var delay = 2000;
+  var delay = 1000;
   if (items.length === 0) return;
   //$("#next-button").hide();
 
