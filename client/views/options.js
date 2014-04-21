@@ -89,7 +89,7 @@ Template.options.rendered = function() {
     }
     for (var key in answers) {
       if (answers.hasOwnProperty(key) && answers[key] === null) {
-        alert("응답하지 않은 문항이 있습니다");
+        alert("모든 문항에 응답해 주십시오");
         return false;
       }
     }
