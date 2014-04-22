@@ -195,9 +195,36 @@ Template.crossword.puzzle = (function() {
   return result;
 })();
 
+var range = 4 * 60;
+var remaining = range;
+
+Template.crossword.debug = function(r) {
+  remaining = r;
+};
+
 Template.crossword.rendered = function () {
   Template.top.title('활동B');
   Template.top.desc('가로세로 낱말퍼즐');
-  Session.set('nextPage', null); // TODO: timer
+  Session.set('nextPage', null);
+  Template.timer.set(remaining, range);
+
+  var minutes = [1, 3];
+
+  var timer = setInterval(function() {
+    remaining--;
+    for (var i = 0; i < minutes.length; i++) {
+      if (remaining === 60 * minutes[i]) {
+        Template.timer.alert(minutes[i] + "분 남았습니다");
+      }
+    }
+
+    if (remaining === 0) {
+      clearInterval(timer);
+      Meteor.Router.to("/activity1c");
+      return;
+    }
+
+    Template.timer.set(remaining);
+  }, 1000);
 };
 
