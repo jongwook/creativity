@@ -29,28 +29,33 @@ Template.activity1c.answers = function() {
 };
 
 var range = 14 * 60;
-var remaining = range;
 
 var save = function() {
   var answers = $(".activity1c-page input").map(function(i, x) { return $(x).val(); }).toArray();
   answers.push("");
   var id = Session.get("id");
   Answers.update({_id: id}, {answers: answers}, {upsert: true});
-}
+};
 
-Template.activity1c.debug = function(r) {
-  remaining = r;
-}
+var SESSION_KEY = "activity-remaining";
+
+Template.activity1c.debug = function(remaining) {
+  Session.set(SESSION_KEY, remaining);
+};
 
 Template.activity1c.rendered = function() {
   setTitle();
   Session.set('nextPage', '/activity1d');
+  var remaining = Session.get(SESSION_KEY) || range;
+  Session.set(SESSION_KEY, remaining);
   Template.timer.set(remaining, range);
+  Template.timer.mute();
 
   var minutes = [1, 3, 6, 8, 10, 12, 13];
 
   var timer = setInterval(function() {
-    remaining--;
+    remaining = Session.get(SESSION_KEY) - 1;
+    Session.set(SESSION_KEY, remaining);
     for (var i = 0; i < minutes.length; i++) {
       if (remaining === 60 * minutes[i]) {
         Template.timer.alert(minutes[i] + "분 남았습니다");
@@ -60,11 +65,12 @@ Template.activity1c.rendered = function() {
     if (remaining === 4 * 60) {
       clearInterval(timer);
       save();
+      Template.timer.mute();
       routeActivity();
       return;
     }
 
-    if (remaining === 0) {
+    if (remaining <= 0) {
       clearInterval(timer);
       Meteor.Router.to("/activity1d");
     }

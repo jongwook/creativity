@@ -44,10 +44,21 @@ Template.timer.message = function(message) {
   return alertMessage;
 };
 
+var muted = false;
+
+Template.timer.mute = function() {
+  muted = true;
+  $(".timer-message").hide().fadeIn(500).hide();
+};
+
 Template.timer.alert = function(message) {
   Template.timer.message(message);
   var alert = $(".timer-message").hide().fadeIn(500);
+  muted = false;
   setTimeout(function() {
-    alert.fadeOut(500);
+    if (!muted) {
+      alert.fadeOut(500);
+      muted = true;
+    }
   }, 3000);
 };

@@ -14,7 +14,7 @@ Template.meditation.rendered = function () {
   var timer = setInterval(function() {
     remaining--;
 
-    if (remaining === 0) {
+    if (remaining <= 0) {
       clearInterval(timer);
       Meteor.Router.to("/activity1c");
       return;
