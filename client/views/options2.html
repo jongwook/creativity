@@ -1,0 +1,61 @@
+<template name="options2">
+  <div class="row options-page">
+    <table>
+      <thead>
+      <tr>
+        <th class="number"></th>
+        <th class="sentence"></th>
+        <th class="radio">1</th>
+        <th class="radio">2</th>
+        <th class="radio">3</th>
+        <th class="radio">4</th>
+        <th class="radio">5</th>
+      </tr>
+      <tr>
+        <th class="number"></th>
+        <th class="sentence"></th>
+        <th colspan="2" class="text-left">
+          전혀<br>아니다
+        </th>
+        <th class="radio"></th>
+        <th colspan="2" class="text-right">
+          매우<br>그렇다
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each object questions}}
+        <tr>
+          <td class="number">
+            {{key}}
+          </td>
+          <td class="sentence">
+            {{value}}
+          </td>
+          {{#if $eq key "5"}}
+            <td class="radio" colspan="5">
+              <input type="text" name="survey2-6">
+            </td>
+          {{else}}
+            <td class="radio">
+              <input type="radio" name="survey2-{{key}}" value="1">
+            </td>
+            <td class="radio">
+              <input type="radio" name="survey2-{{key}}" value="2">
+            </td>
+            <td class="radio">
+              <input type="radio" name="survey2-{{key}}" value="3">
+            </td>
+            <td class="radio">
+              <input type="radio" name="survey2-{{key}}" value="4">
+            </td>
+            <td class="radio">
+              <input type="radio" name="survey2-{{key}}" value="5">
+            </td>
+          {{/if}}
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>

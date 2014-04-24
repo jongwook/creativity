@@ -4,10 +4,11 @@ var desc = '혁신적인 아이디어 생각해내기';
 var setTitle = function() {
   Template.top.title(title);
   Template.top.desc(desc);
-}
+};
 
 Template.activity1.rendered = function() {
-  setTitle();
+  Template.top.title('');
+  Template.top.desc('');
   Session.set('nextPage', '/activity1a');
 };
 
@@ -20,6 +21,38 @@ Template.activity1a.rendered = function() {
 Template.activity1b.rendered = function() {
   setTitle();
   Session.set('nextPage', '/activity1c');
+
+  var remaining = Session.get(SESSION_KEY) || range;
+  Session.set(SESSION_KEY, remaining);
+  Template.timer.set(remaining, range);
+  Template.timer.mute();
+
+  var minutes = [1, 3, 6, 8, 10, 12, 13];
+
+  var timer = setInterval(function() {
+    remaining = Session.get(SESSION_KEY) - 1;
+    Session.set(SESSION_KEY, remaining);
+    for (var i = 0; i < minutes.length; i++) {
+      if (remaining === 60 * minutes[i]) {
+        Template.timer.alert(minutes[i] + "분 남았습니다");
+      }
+    }
+
+    if (remaining === 5 * 60) {
+      clearInterval(timer);
+      save();
+      Template.timer.mute();
+      routeActivity();
+      return;
+    }
+
+    if (remaining <= 0) {
+      clearInterval(timer);
+      Meteor.Router.to("/activity1d");
+    }
+
+    Template.timer.set(remaining);
+  }, 1000);
 };
 
 Template.activity1c.answers = function() {
@@ -28,7 +61,7 @@ Template.activity1c.answers = function() {
   return record && record.answers ? record.answers : ["", "", "", "", "", "", "", "", "", ""];
 };
 
-var range = 14 * 60;
+var range = 15 * 60;
 
 var save = function() {
   var answers = $(".activity1c-page input").map(function(i, x) { return $(x).val(); }).toArray();
@@ -45,7 +78,7 @@ Template.activity1c.debug = function(remaining) {
 
 Template.activity1c.rendered = function() {
   setTitle();
-  Session.set('nextPage', '/activity1d');
+  Session.set('nextPage', '');
   var remaining = Session.get(SESSION_KEY) || range;
   Session.set(SESSION_KEY, remaining);
   Template.timer.set(remaining, range);

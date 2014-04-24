@@ -8,7 +8,7 @@
     <form class="survey-form">
       <div class="row">
         <div class="small-3 large-2 columns vcenter">
-          1. 이름
+          1. 개인ID
         </div>
         <div class="small-9 large-2 columns">
           <input type="text" name="name" placeholder="이름" required>
@@ -74,9 +74,9 @@
   <div class="row survey1-page">
     <div style="width: 80%; margin: auto;">
       <div class="instruction">
-        주의 깊게 읽고 <u>자신의 모습을 가장 잘 표현하는 곳</u>에 <em>1(전혀 아니다)에서부터 5(매우 그렇다)</em>까지 솔직하게 반응해주시기 바랍니다.
+        다음의 문항들은 옳고 그름을 판단하기 위한 것이 아니니 문항들을 주의 깊게 읽고 평소 <u>자신의 모습을 가장 잘 표현하는 곳</u>에 <em>1(전혀 아니다)에서부터 5(매우 그렇다)</em>까지 솔직하게 반응해주시기 바랍니다.
       </div>
-      {{> options}}
+      {{> options1}}
     </div>
   </div>
 </template>
@@ -84,7 +84,7 @@
 <template name="survey1b">
   <div class="row survey1-page">
     <div style="width: 80%; margin: auto;">
-      {{> options}}
+      {{> options1}}
     </div>
   </div>
 </template>
@@ -92,7 +92,7 @@
 <template name="survey1c">
   <div class="row survey1-page">
     <div style="width: 80%; margin: auto;">
-      {{> options}}
+      {{> options1}}
     </div>
   </div>
 </template>

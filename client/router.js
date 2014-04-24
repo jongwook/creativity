@@ -23,9 +23,20 @@ Template.top.desc = function(newDesc) {
 };
 
 Template.top.title("Routing...");
+Template.bottom.prevPage = function () {
+  return Session.get('prevPage');
+};
+Template.bottom.prevLabel = function() {
+  return Session.get('prevLabel');
+};
+
 Template.bottom.nextPage = function () {
   return Session.get('nextPage');
 };
+Template.bottom.nextLabel = function() {
+  return Session.get('nextLabel');
+};
+
 
 Meteor.Router.add({
   '/': 'welcome',
@@ -56,6 +67,8 @@ Meteor.Router.add({
 Meteor.Router.filters({
   'save': function(page) {
     Session.set('currentPage', page);
+    Session.set('prevLabel', '');
+    Session.set('nextLabel', '');
     return page;
   }
 });

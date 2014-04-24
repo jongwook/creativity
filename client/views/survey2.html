@@ -14,7 +14,7 @@
           <input type="radio" name="survey2-0" value="no" id="survey2-0-no"><label for="survey2-0-no">없다</label>
         </div>
       </div>
-      {{> options}}
+      {{> options2}}
     </div>
   </div>
 </template>
@@ -27,7 +27,7 @@
           <em>혁신적인 아이디어 생성 과제는...</em>
         </div>
       </div>
-      {{> options}}
+      {{> options2}}
     </div>
   </div>
 </template>
@@ -35,15 +35,18 @@
 <template name="survey2c">
   <div class="row survey2c-page">
     <div style="width: 80%; margin: auto;">
-      {{> options}}
+      {{> options2}}
     </div>
   </div>
 </template>
 
 <template name="survey2d">
   <div class="row survey2d-page">
+    <div class="instruction">
+      다음은 과제를 마치고 난 후 여러분의 감정을 묻는 질문입니다. 자신이 느낀 그대로 <em>1(전혀 아니다)에서부터 5(매우 그렇다)까지</em> 솔직하게 응답해주시기 바랍니다.
+    </div>
     <div style="width: 80%; margin: auto;">
-      {{> options}}
+      {{> options2}}
     </div>
   </div>
 </template>
