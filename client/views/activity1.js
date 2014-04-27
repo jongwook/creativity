@@ -37,6 +37,7 @@ var save = function(push) {
   }
   var id = Session.get("id");
   Answers.update({_id: id}, {_id: id, answers: answers}, {upsert: true});
+  console.log("Saved", answers.length, "answers");
 };
 
 Template.activity1c.rendered = function() {
@@ -44,6 +45,10 @@ Template.activity1c.rendered = function() {
   Session.set('nextPage', '');
   Template.timer.mute();
   startPrimary();
+};
+
+Template.activity1c.destroyed = function() {
+  save();
 };
 
 Template.activity1c.events({
