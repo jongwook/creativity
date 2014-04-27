@@ -57,12 +57,11 @@ Template.activity1c.events({
       console.log(next, clear);
       save();
       setTimeout(function() {
-        console.log("prev", clear, next, next.val());
-        if (clear) {
-          setTimeout(function() {next.val('')}, 10);
-        }
         next.focus();
-        console.log("next", clear, next, next.val());
+        if (clear) {
+          $(document.activeElement).val('');
+        }
+        //$('html, body').scrollTop($(document.activeElement).offset().top);
       }, 10);
     } else {
       save("");
