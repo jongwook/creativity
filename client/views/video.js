@@ -1,8 +1,13 @@
-var range = 4 * 60;
-var remaining = range;
+Template.prevideo.rendered = function() {
+  Template.top.title('');
+  Template.top.desc('');
+  Session.set('nextPage', '/video');
+};
 
-Template.video.debug = function(r) {
-  remaining = r;
+Template.postvideo.rendered = function() {
+  Template.top.title('');
+  Template.top.desc('');
+  Session.set('nextPage', '/activity1c');
 };
 
 Template.video.rendered = function () {
@@ -10,23 +15,8 @@ Template.video.rendered = function () {
   Template.top.desc('재미있는 동영상 시청');
   Session.set('nextPage', null);
 
-  var remaining = Session.get(SESSION_KEY) || range;
-  Session.set(SESSION_KEY, remaining);
-  Template.timer.set(remaining, range);
+  Template.timer.set(secondaryRange, secondaryRange);
   Template.timer.mute();
-
-
-  var timer = setInterval(function() {
-    remaining = Session.get(SESSION_KEY) - 1;
-    Session.set(SESSION_KEY, remaining);
-
-    if (remaining <= 0) {
-      clearInterval(timer);
-      Meteor.Router.to("/activity1c");
-      return;
-    }
-
-    Template.timer.set(remaining);
-  }, 1000);
+  startSecondary();
 };
 

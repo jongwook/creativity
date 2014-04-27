@@ -11,8 +11,17 @@ Session.set("stage", (function() {
 routeActivity = function() {
   Meteor.Router.to([
     '/notfound',
-    '/crossword',
-    '/video',
-    '/meditation'
+    '/precrossword',
+    '/prevideo',
+    '/premeditation'
+  ][Session.get("stage")] || '/error');
+};
+
+routeAfterTimeout = function() {
+  Meteor.Router.to([
+    '/notfound',
+    '/postcrossword',
+    '/postvideo',
+    '/postmeditation'
   ][Session.get("stage")] || '/error');
 };

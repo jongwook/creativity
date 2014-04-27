@@ -1,3 +1,16 @@
+Template.precrossword.rendered = function() {
+  Template.top.title('');
+  Template.top.desc('');
+  Session.set('nextPage', '/crossword');
+};
+
+Template.postcrossword.rendered = function() {
+  Template.top.title('');
+  Template.top.desc('');
+  Session.set('nextPage', '/activity1c');
+};
+
+
 String.prototype.trimmed = function() {
   return $.map(this.split(''), function(s) { return s.trim(); });
 };
@@ -195,43 +208,13 @@ Template.crossword.puzzle = (function() {
   return result;
 })();
 
-var range = 4 * 60;
-var SESSION_KEY = "crossword-remaining";
-
-Template.crossword.debug = function(remaining) {
-  Session.set(SESSION_KEY, remaining);
-};
-
 Template.crossword.rendered = function () {
   Template.top.title('활동B');
   Template.top.desc('가로세로 낱말퍼즐');
   Session.set('nextPage', null);
 
-  var remaining = Session.get(SESSION_KEY) || range;
-  Session.set(SESSION_KEY, remaining);
-  Template.timer.set(remaining, range);
+  Template.timer.set(secondaryRange, secondaryRange);
   Template.timer.mute();
-
-  var minutes = [1, 3];
-
-  var timer = setInterval(function() {
-    remaining = Session.get(SESSION_KEY) - 1;
-    Session.set(SESSION_KEY, remaining);
-
-    for (var i = 0; i < minutes.length; i++) {
-      if (remaining === 60 * minutes[i]) {
-        Template.timer.alert(minutes[i] + "분 남았습니다");
-      }
-    }
-
-    if (remaining <= 0) {
-      clearInterval(timer);
-      Template.timer.mute();
-      Meteor.Router.to("/activity1c");
-      return;
-    }
-
-    Template.timer.set(remaining);
-  }, 1000);
+  startSecondary();
 };
 

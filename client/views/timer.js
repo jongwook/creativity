@@ -19,7 +19,7 @@ Template.timer.range = function() {
 
 Template.timer.percentage = function() {
   return 100 * value / range;
-}
+};
 
 Template.timer.set = function(v, r) {
   value = v;
