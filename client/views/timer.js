@@ -54,6 +54,7 @@ Template.timer.mute = function() {
 Template.timer.alert = function(message) {
   Template.timer.message(message);
   var alert = $(".timer-message").hide().fadeIn(500);
+  document.getElementById("beep-audio").play();
   muted = false;
   setTimeout(function() {
     if (!muted) {

@@ -57,8 +57,12 @@ Template.activity1c.events({
       console.log(next, clear);
       save();
       setTimeout(function() {
-        if (clear) next.val('');
+        console.log("prev", clear, next, next.val());
+        if (clear) {
+          setTimeout(function() {next.val('')}, 10);
+        }
         next.focus();
+        console.log("next", clear, next, next.val());
       }, 10);
     } else {
       save("");
@@ -67,7 +71,7 @@ Template.activity1c.events({
           $(document.activeElement).val("");
         }
         window.scrollTo(0,document.body.scrollHeight);
-      }, 10);
+      }, 0);
     }
   }
 });
