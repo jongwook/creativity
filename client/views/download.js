@@ -44,7 +44,7 @@ var convert = function(docs) {
     csv += ',survey2-' + s2;
   }
 
-  csv += ',answers\n';
+  csv += ',answers\r\n';
 
   for (var i = 0; i < docs.length; i++) {
     var doc = docs[i];
@@ -72,7 +72,7 @@ var convert = function(docs) {
         csv += ',' + clean(doc.answers[j]);
       }
     }
-    csv += '\n';
+    csv += '\r\n';
   }
   return "data:text/csv;base64," + B64.encode(csv);
 };
