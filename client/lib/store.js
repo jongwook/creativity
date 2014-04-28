@@ -1,9 +1,11 @@
 
+Meteor.subscribe("answers");
+
 submitData = function(data) {
   var id = Session.get('id');
   var document;
   if (Answers.findOne(id) === undefined) {
-    document = _.extend({_id: id, created: Date.now()}, data);
+    document = _.extend({_id: id, created: Date.now(), type: Session.get('type'), stage: Session.get('stage')}, data);
     Answers.insert(document);
     console.log('inserted : ' + JSON.stringify(document, 0, 2));
   } else {

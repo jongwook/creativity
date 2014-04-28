@@ -58,15 +58,20 @@ var getQuestion = function() {
 Template.options2.questions = getQuestion;
 Template.options2.rendered = function() {
   Template.bottom.verify = function() {
-    var buttons = $("#main-container").find('input');
-    var checked = buttons.filter(':checked');
+    var fields = $("#main-container").find('input');
+    var checked = fields.filter(':checked');
     var answers = {};
-    for (var i = 0; i < buttons.length; i++) {
-      answers[$(buttons[i]).attr("name")] = null;
+    for (var i = 0; i < fields.length; i++) {
+      var field = $(fields[i]);
+      answers[field.attr("name")] = null;
+      if (field.attr("type") === "text" && field.val().trim() !== "") {
+        answers[field.attr("name")] = field.val();
+      }
     }
     for (var j = 0; j < checked.length; j++) {
       answers[$(checked[j]).attr("name")] = $(checked[j]).val();
     }
+
     for (var key in answers) {
       if (answers.hasOwnProperty(key) && answers[key] === null) {
         alert("모든 문항에 응답해 주십시오");

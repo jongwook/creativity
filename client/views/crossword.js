@@ -1,13 +1,31 @@
+var pre = 0;
+
 Template.precrossword.rendered = function() {
   Template.top.title('');
   Template.top.desc('');
   Session.set('nextPage', '/crossword');
+
+  pre = Date.now();
 };
+
+Template.precrossword.destroyed = function() {
+  var elapsed = Date.now() - pre;
+  submitData({pre: elapsed});
+};
+
+var post = 0;
 
 Template.postcrossword.rendered = function() {
   Template.top.title('');
   Template.top.desc('');
   Session.set('nextPage', '/activity1c');
+
+  post = Date.now();
+};
+
+Template.postcrossword.destroyed = function() {
+  var elapsed = Date.now() - post;
+  submitData({post: elapsed});
 };
 
 

@@ -46,7 +46,7 @@ Template.activity1c.rendered = function() {
 };
 
 Template.activity1c.destroyed = function() {
-  
+
 };
 
 Template.activity1c.events({
