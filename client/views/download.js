@@ -24,8 +24,11 @@ year: "4"
 yearCustom: "" */
 
 var clean = function(str) {
-  if (!str) return "";
-  return str.replace(/,/g, ';');
+  if (str === undefined || str === null)
+    return "";
+  if (typeof(str) === 'string')
+    return str.replace(/,/g, ';');
+  return str;
 };
 
 var convert = function(docs) {
@@ -44,33 +47,34 @@ var convert = function(docs) {
   csv += ',answers\n';
 
   for (var i = 0; i < docs.length; i++) {
-    csv += clean(docs._id);
-    csv += ',' + clean(docs.created);
-    csv += ',' + clean(docs.updated);
-    csv += ',' + clean(docs.name);
-    csv += ',' + clean(docs.gender);
-    csv += ',' + clean(docs.birthyear);
-    csv += ',' + clean(docs.college);
-    csv += ',' + clean(docs.major);
-    csv += ',' + clean(docs.year);
-    csv += ',' + clean(docs.yearCustom);
-    csv += ',' + clean(docs.pre);
-    csv += ',' + clean(docs.post);
-    csv += ',' + clean(JSON.stringify(docs.crossword));
+    var doc = docs[i];
+    csv += clean(doc._id);
+    csv += ',' + clean(date("Y-m-d H:i:s", doc.created));
+    csv += ',' + clean(date("Y-m-d H:i:s", doc.updated));
+    csv += ',' + clean(doc.name);
+    csv += ',' + clean(doc.gender);
+    csv += ',' + clean(doc.birthyear);
+    csv += ',' + clean(doc.college);
+    csv += ',' + clean(doc.major);
+    csv += ',' + clean(doc.year);
+    csv += ',' + clean(doc.yearCustom);
+    csv += ',' + clean(doc.pre);
+    csv += ',' + clean(doc.post);
+    csv += ',' + clean(JSON.stringify(doc.crossword));
     for (var ss1 = 1; ss1 <= s1s; ss1++) {
-      csv += ',' + clean(docs['survey1-' + ss1]);
+      csv += ',' + clean(doc['survey1-' + ss1]);
     }
     for (var ss2 = 1; ss2 <= s2s; ss2++) {
-      csv += ',' + clean(docs['survey2-' + ss2]);
+      csv += ',' + clean(doc['survey2-' + ss2]);
     }
-    if (docs.answers) {
-      for (var j = 0; j < docs.answers.length; j++) {
-        csv += ',' + clean(docs.answers[j]);
+    if (doc.answers) {
+      for (var j = 0; j < doc.answers.length; j++) {
+        csv += ',' + clean(doc.answers[j]);
       }
     }
     csv += '\n';
   }
-  return "data:text/csv;base64," + btoa(csv);
+  return "data:text/csv;base64," + B64.encode(csv);
 };
 
 
