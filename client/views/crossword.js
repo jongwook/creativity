@@ -226,6 +226,17 @@ Template.crossword.puzzle = (function() {
   return result;
 })();
 
+var answers = [];
+
+var fetch = function() {
+  var array = $(".crossword-page input").map(function(i, x) { return $(x).val(); }).toArray();
+  if (array.length > 0) {
+    answers = array;
+  }
+};
+
+var timer;
+
 Template.crossword.rendered = function () {
   Template.top.title('활동B');
   Template.top.desc('가로세로 낱말퍼즐');
@@ -234,5 +245,12 @@ Template.crossword.rendered = function () {
   Template.timer.set(secondaryRange, secondaryRange);
   Template.timer.mute();
   startSecondary();
+
+  timer = setInterval(fetch, 1000);
+};
+
+Template.crossword.destroyed = function() {
+  submitData({crossword: answers});
+  console.log("Submitted ", JSON.stringify(answers));
 };
 

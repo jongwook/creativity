@@ -67,6 +67,7 @@ Meteor.Router.add({
   '/survey2c': 'survey2c',
   '/survey2d': 'survey2d',
   '/thankyou': 'thankyou',
+  '/download-results': 'download',
   '*': '404'
 });
 

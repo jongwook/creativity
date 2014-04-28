@@ -8,6 +8,7 @@ Template.survey1.rendered = function() {
     var values = {
       name: form.find('input[name="name"]').val(),
       gender: form.find('input[name="gender"]:checked').val(),
+      birthyear: form.find('input[name="birthyear"]').val(),
       college: form.find('input[name="college"]').val(),
       major: form.find('input[name="major"]').val(),
       year: form.find('input[name="year"]:checked').val(),
@@ -19,6 +20,10 @@ Template.survey1.rendered = function() {
     }
     if (!values.gender) {
       alert('성별을 입력해 주십시오');
+      return false;
+    }
+    if (!values.birthyear) {
+      alert('생년을 입력해 주십시오');
       return false;
     }
     if (!values.college) {

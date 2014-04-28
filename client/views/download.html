@@ -1,0 +1,7 @@
+<template name="download">
+  {{#each object links}}
+    <p>
+      <b>{{key}}</b> : <a href="{{value.url}}" id="download-{{key}}">{{value.size}} records</a><br>
+    </p>
+  {{/each}}
+</template>

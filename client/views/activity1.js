@@ -30,49 +30,72 @@ Template.activity1c.answers = function() {
   return record && record.answers ? record.answers : ["", "", "", "", "", "", "", "", "", ""];
 };
 
+var answers = [];
+
+var fetch = function() {
+  var array = $(".activity1c-page input").map(function(i, x) { return $(x).val(); }).toArray();
+  if (array.length > 0) {
+    answers = array;
+  }
+};
+
 var save = function(push) {
-  var answers = $(".activity1c-page input").map(function(i, x) { return $(x).val(); }).toArray();
+  fetch();
+  if (answers.length === 0) return;
   if (push !== undefined) {
     answers.push(push);
   }
   submitData({answers: answers});
 };
 
+var timer = 0;
+
 Template.activity1c.rendered = function() {
   setTitle();
   Session.set('nextPage', '');
   Template.timer.mute();
   startPrimary();
+
+  timer = setInterval(fetch, 1000);
 };
 
 Template.activity1c.destroyed = function() {
+  clearInterval(timer);
 
+  submitData({answers: answers});
 };
 
 Template.activity1c.events({
+  'blur input': function(event) {
+    console.log('blur', event.target);
+  },
+  'focus input': function(event) {
+    console.log('focus', event.target);
+  },
   'keydown input': function(event) {
-    if (event.which !== 13) return;
-    var input = $(event.target);
-    if (input.val() === "") return;
-    var next = $('input:eq(' + ($(':input').index(input) + 1) + ')');
-    if (next.length > 0) {
-      var clear = next.val() === "";
-      console.log(next, clear);
-      save();
-      setTimeout(function() {
-        next.focus();
-        if (clear) {
-          $(document.activeElement).val('');
-        }
-      }, 10);
-    } else {
-      save("");
-      setTimeout(function() {
-        if (document.activeElement.nodeName === "INPUT") {
-          $(document.activeElement).val("");
-        }
-        window.scrollTo(0,document.body.scrollHeight);
-      }, 0);
+    if (event.which === 13) {
+      var input = $(event.target);
+      if (input.val() === "") return;
+      var next = $('input:eq(' + ($(':input').index(input) + 1) + ')');
+      if (next.length > 0) {
+        var clear = next.val() === "";
+        console.log(next, clear);
+        save();
+        setTimeout(function() {
+          next.focus();
+          if (clear) {
+            $(document.activeElement).val('');
+          }
+        }, 10);
+      } else {
+        save("");
+        setTimeout(function() {
+          if (document.activeElement.nodeName === "INPUT") {
+            $(document.activeElement).val("");
+          }
+          window.scrollTo(0,document.body.scrollHeight);
+        }, 0);
+      }
     }
   }
 });
