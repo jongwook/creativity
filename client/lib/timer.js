@@ -96,7 +96,7 @@ var secondaryFunction = function() {
 
   for (var i = 0; i < secondaryMinutes.length; i++) {
     if (remaining === 60 * secondaryMinutes[i]) {
-      Template.timer.alert(secondaryMinutes[i] + "분 남았습니다");
+      //Template.timer.alert(secondaryMinutes[i] + "분 남았습니다");
     }
   }
 
