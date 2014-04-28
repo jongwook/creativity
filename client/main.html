@@ -13,7 +13,10 @@
     </div>
   </section>
   {{> bottom}}
-  <audio src="/beep.wav" id="beep-audio"></audio>
+  <audio id="beep-audio" type="audio/wav">
+    <source src="/beep.wav" type="audio/wav">
+    <source src="/beep.mp3" type="audio/mp3">
+  </audio>
 </body>
 
 <template name="top">
