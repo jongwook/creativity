@@ -35,9 +35,7 @@ var save = function(push) {
   if (push !== undefined) {
     answers.push(push);
   }
-  var id = Session.get("id");
-  Answers.update({_id: id}, {_id: id, answers: answers}, {upsert: true});
-  console.log("Saved", answers.length, "answers");
+  submitData({answers: answers});
 };
 
 Template.activity1c.rendered = function() {
@@ -48,7 +46,7 @@ Template.activity1c.rendered = function() {
 };
 
 Template.activity1c.destroyed = function() {
-  save();
+  
 };
 
 Template.activity1c.events({
@@ -66,7 +64,6 @@ Template.activity1c.events({
         if (clear) {
           $(document.activeElement).val('');
         }
-        //$('html, body').scrollTop($(document.activeElement).offset().top);
       }, 10);
     } else {
       save("");

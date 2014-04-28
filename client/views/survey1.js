@@ -37,8 +37,7 @@ Template.survey1.rendered = function() {
       alert('학년을 직접 입력해 주십시오');
       return false;
     }
-    var id = Session.get("id");
-    Answers.update({_id: id}, {_id: id, info: values}, {upsert: true});
+    submitData(values);
     return true;
   }
 };

@@ -73,8 +73,7 @@ Template.options2.rendered = function() {
         return false;
       }
     }
-    var id = Session.get("id");
-    Answers.update({_id: id}, {$set: answers});
+    submitData(answers);
     return true;
   }
 };

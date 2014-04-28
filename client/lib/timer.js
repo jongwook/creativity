@@ -53,7 +53,6 @@ var primaryFunction = function() {
 
   if (remaining === 5 * 60) {
     pausePrimary();
-    //save();
     routeActivity();
     return;
   }
