@@ -1,4 +1,5 @@
 <template name="timer">
+  {{#unless hide}}
   <div class="row timer-page">
     <div class="timer-message">{{message}}</div>
     <div class="nice round progress alert small-10 large-11 columns">
@@ -8,4 +9,5 @@
       {{value}}
     </div>
   </div>
+  {{/unless}}
 </template>

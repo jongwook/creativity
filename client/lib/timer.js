@@ -40,6 +40,8 @@ var decrementPrimary = function() {
   primaryRemaining--;
 };
 
+var skipSecondary = Session.get('type') === 0;
+
 var primaryFunction = function() {
   decrementPrimary();
   var remaining = primary();
@@ -51,7 +53,7 @@ var primaryFunction = function() {
     }
   }
 
-  if (remaining === 5 * 60) {
+  if (!skipSecondary && remaining === 5 * 60) {
     pausePrimary();
     routeActivity();
     return;

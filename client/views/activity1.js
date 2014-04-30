@@ -24,6 +24,12 @@ Template.activity1b.rendered = function() {
   startPrimary();
 };
 
+Template.activity1b.description = function() {
+  return Session.get('type') === 0 && Session.get('stage') === 2 ?
+    "를 받을 수 있습니다. 과제 수행시간은 충분하니 다양하고 창의적인 아이디어를 자유롭게 떠올려 주시기 바랍니다." :
+    "를 받을 수 있기 때문에 제한시간 내에 보다 다양하고 창의적인 아이디어를 떠올려 주시기 바랍니다.";
+};
+
 Template.activity1c.answers = function() {
   var id = Session.get("id");
   var record = Answers.findOne({_id: id});

@@ -51,10 +51,12 @@ Template.timer.mute = function() {
   $(".timer-message").hide().fadeIn(500).hide();
 };
 
+var hide = Template.timer.hide = Session.get('type') === 0 && Session.get('stage') === 2;
+
 Template.timer.alert = function(message) {
   Template.timer.message(message);
   var alert = $(".timer-message").hide().fadeIn(500);
-  document.getElementById("beep-audio").play();
+  if (!hide) document.getElementById("beep-audio").play();
   muted = false;
   setTimeout(function() {
     if (!muted) {
