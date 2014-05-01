@@ -1,5 +1,5 @@
 
-var types = [1];
+var types = [0, 1];
 var stages = [1, 2, 3];
 
 Template.download.rendered = function() {
