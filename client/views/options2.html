@@ -25,18 +25,60 @@
       </thead>
       <tbody>
       {{#each object questions}}
-        <tr>
-          <td class="number">
-            {{key}}
-          </td>
-          <td class="sentence">
-            {{value}}
-          </td>
-          {{#if $eq key "5"}}
+        {{#if hidden}}
+          {{#if $eq key "6"}}
+            <input type="hidden" name="survey2-6" value="0">
+          {{else}} {{#if $eq key "7"}}
+            <input type="hidden" name="survey2-7" value="0">
+          {{else}} {{#if $eq key "8"}}
+            <input type="hidden" name="survey2-8" value="0">
+          {{else}} {{#if $eq key "9"}}
+            <input type="hidden" name="survey2-9" value="0">
+          {{else}}
+            <tr>
+              <td class="number">
+                {{key}}
+              </td>
+              <td class="sentence">
+                {{value}}
+              </td>
+              {{#if $eq key "5"}}
+              <td class="radio" colspan="5">
+                <input type="text" name="survey2-5">
+              </td>
+              {{else}}
+              <td class="radio">
+                <input type="radio" name="survey2-{{key}}" value="1">
+              </td>
+              <td class="radio">
+                <input type="radio" name="survey2-{{key}}" value="2">
+              </td>
+              <td class="radio">
+                <input type="radio" name="survey2-{{key}}" value="3">
+              </td>
+              <td class="radio">
+                <input type="radio" name="survey2-{{key}}" value="4">
+              </td>
+              <td class="radio">
+                <input type="radio" name="survey2-{{key}}" value="5">
+              </td>
+              {{/if}}
+            </tr>
+          {{/if}}{{/if}}{{/if}}{{/if}}
+        {{else}}
+          <!-- I hate handlebars -->
+          <tr>
+            <td class="number">
+              {{key}}
+            </td>
+            <td class="sentence">
+              {{value}}
+            </td>
+            {{#if $eq key "5"}}
             <td class="radio" colspan="5">
               <input type="text" name="survey2-5">
             </td>
-          {{else}}
+            {{else}}
             <td class="radio">
               <input type="radio" name="survey2-{{key}}" value="1">
             </td>
@@ -52,8 +94,9 @@
             <td class="radio">
               <input type="radio" name="survey2-{{key}}" value="5">
             </td>
-          {{/if}}
-        </tr>
+            {{/if}}
+          </tr>
+        {{/if}}
       {{/each}}
       </tbody>
     </table>

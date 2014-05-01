@@ -24,7 +24,13 @@ Template.activity1b.rendered = function() {
   startPrimary();
 };
 
-Template.activity1b.description = function() {
+Template.activity1b.description1 = function() {
+  return Session.get('type') === 0 && Session.get('stage') === 2 ?
+    "" :
+    "사전조사 결과, 일반적인 대학생이라면 평균 10개의 아이디어를 제시하였습니다.";
+};
+
+Template.activity1b.description2 = function() {
   return Session.get('type') === 0 && Session.get('stage') === 2 ?
     "를 받을 수 있습니다. 과제 수행시간은 충분하니 다양하고 창의적인 아이디어를 자유롭게 떠올려 주시기 바랍니다." :
     "를 받을 수 있기 때문에 제한시간 내에 보다 다양하고 창의적인 아이디어를 떠올려 주시기 바랍니다.";
@@ -74,9 +80,11 @@ Template.activity1c.destroyed = function() {
 Template.activity1c.events({
   'blur input': function(event) {
     console.log('blur', event.target);
+    //save();
   },
   'focus input': function(event) {
     console.log('focus', event.target);
+
   },
   'keydown input': function(event) {
     if (event.which === 13) {

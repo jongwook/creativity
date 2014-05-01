@@ -55,6 +55,10 @@ var getQuestion = function() {
   return questions[Session.get("currentPage")] || null;
 };
 
+Template.options2.hidden = function() {
+  return Session.get('type') === 0;
+};
+
 Template.options2.questions = getQuestion;
 Template.options2.rendered = function() {
   Template.bottom.verify = function() {
@@ -64,7 +68,7 @@ Template.options2.rendered = function() {
     for (var i = 0; i < fields.length; i++) {
       var field = $(fields[i]);
       answers[field.attr("name")] = null;
-      if (field.attr("type") === "text" && field.val().trim() !== "") {
+      if ((field.attr("type") === "text" || field.attr("type") === "hidden") && field.val().trim() !== "") {
         answers[field.attr("name")] = field.val();
       }
     }
