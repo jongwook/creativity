@@ -32,6 +32,9 @@ Template.meditation.rendered = function () {
   Template.top.title("활동B");
   Template.top.desc("휴식");
 
+  pausePrimary();
+  startSecondary();
+
   Session.set('secondaryActivityPath', '/meditation');
 
   if (Session.get('type') === 2 && primary() > 0) {

@@ -71,6 +71,8 @@ Template.activity1c.rendered = function() {
     Session.set('nextPage', '');
   }
   Template.timer.mute();
+  
+  pauseSecondary();
   startPrimary();
 
   timer = setInterval(fetch, 1000);

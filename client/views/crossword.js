@@ -241,6 +241,9 @@ Template.crossword.rendered = function () {
   Template.top.title('활동B');
   Template.top.desc('가로세로 낱말퍼즐');
 
+  pausePrimary();
+  startSecondary();
+
   Session.set('secondaryActivityPath', '/crossword');
 
   if (Session.get('type') === 2 && primary() > 0) {
