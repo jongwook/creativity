@@ -41,6 +41,7 @@ var decrementPrimary = function() {
 };
 
 var skipSecondary = Session.get('type') === 0;
+var jumpableSecondary = Session.get('type') === 2;
 
 var primaryFunction = function() {
   decrementPrimary();
@@ -53,15 +54,20 @@ var primaryFunction = function() {
     }
   }
 
-  if (!skipSecondary && remaining === 5 * 60) {
+  if (!skipSecondary && remaining === 5 * 60 && !jumpableSecondary) {
     pausePrimary();
-    routeActivity();
+    routeSecondaryActivity();
     return;
   }
 
   if (remaining <= 0) {
     pausePrimary();
-    Meteor.Router.to("/activity1d");
+    if (jumpableSecondary && secondaryRemaining > 0) {
+      // still got to do the secondary
+      routeSecondaryActivity();
+    } else {
+      Meteor.Router.to("/activity1d");
+    }
   }
 };
 

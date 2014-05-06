@@ -19,13 +19,22 @@ var stage = (function() {
 Session.set('type', type);
 Session.set('stage', stage);
 
-routeActivity = function() {
-  Meteor.Router.to([
-    '/notfound',
-    '/precrossword',
-    '/prevideo',
-    '/premeditation'
-  ][stage] || '/error');
+Session.set('secondaryActivityLabel', [
+  '',
+  '활동B(가로세로 낱말퍼즐)로 전환하기',
+  '활동B(재미있는 동영상 시청)로 전환하기',
+  '활동B(휴식)로 전환하기'
+][stage] || '');
+
+Session.set('secondaryActivityPath', [
+  '/notfound',
+  '/precrossword',
+  '/prevideo',
+  '/premeditation'
+][stage] || '/error');
+
+routeSecondaryActivity = function() {
+  Meteor.Router.to(Session.get('secondaryActivityPath'));
 };
 
 routeAfterTimeout = function() {

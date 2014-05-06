@@ -64,7 +64,12 @@ var timer = 0;
 
 Template.activity1c.rendered = function() {
   setTitle();
-  Session.set('nextPage', '');
+  if (Session.get('type') === 2 && secondary() > 0) {
+    Session.set('nextLabel', Session.get('secondaryActivityLabel'));
+    Session.set('nextPage', Session.get('secondaryActivityPath'));
+  } else {
+    Session.set('nextPage', '');
+  }
   Template.timer.mute();
   startPrimary();
 

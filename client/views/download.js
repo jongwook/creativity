@@ -7,22 +7,6 @@ Template.download.rendered = function() {
   Template.top.desc('');
 };
 
-/*
-answers: Array[10]
-college: "카이스트"
-created: 1398692883691
-crossword: Array[47]
-gender: "male"
-major: "222"
-name: "김종욱"
-post: 1551
-pre: 1475
-stage: 1
-type: 1
-updated: 1398696424984
-year: "4"
-yearCustom: "" */
-
 var clean = function(str) {
   if (str === undefined || str === null)
     return "";
